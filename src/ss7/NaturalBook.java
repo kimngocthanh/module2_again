@@ -1,6 +1,6 @@
 package ss7;
 
-public class NaturalBook extends Book implements IBook{
+public class NaturalBook extends Book {
     private String publicationObject;
 
     public NaturalBook(){

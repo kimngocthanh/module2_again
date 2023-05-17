@@ -1,6 +1,6 @@
 package ss7;
 
-public class SocialBook extends Book implements IBook{
+public class SocialBook extends Book {
     private String author;
 
     public SocialBook() {
