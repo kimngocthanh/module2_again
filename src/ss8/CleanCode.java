@@ -1,14 +1,12 @@
 package ss8;
 
-public class CleanCode extends Employee{
+public class CleanCode {
 
     public int sum(int num1, int num2, int num3) {
         return num1 + num2 + num3;
     }
 
-    private void employeeDetails() {
-        super.toString();
-    }
+    Employee employee = new Employee();
 
     public boolean isLeapYear(int year) {
         if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
