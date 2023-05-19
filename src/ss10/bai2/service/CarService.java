@@ -9,11 +9,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CarService implements ICarService {
-    CarRepository carRepository = new CarRepository();
+    private CarRepository carRepository = new CarRepository();
     Scanner scanner = new Scanner(System.in);
-    List<Car> carList = carRepository.displayCar();
-    ManufacturerRepository manufacturerRepository = new ManufacturerRepository();
-    List<Manufacturer> manufacturerRepositoryList = manufacturerRepository.display();
+    private List<Car> carList = carRepository.displayCar();
+    private ManufacturerRepository manufacturerRepository = new ManufacturerRepository();
+    private List<Manufacturer> manufacturerRepositoryList = manufacturerRepository.display();
 
     @Override
     public void displayCar() {

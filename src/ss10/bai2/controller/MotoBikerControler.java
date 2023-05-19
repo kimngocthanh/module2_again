@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class MotoBikerControler {
     Scanner scanner = new Scanner(System.in);
-    MotoBikerService motoBikerService = new MotoBikerService();
+    private MotoBikerService motoBikerService = new MotoBikerService();
     public void motoBikerController(){
         boolean flag = true;
         do {

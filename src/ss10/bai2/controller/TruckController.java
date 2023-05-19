@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class TruckController {
     Scanner scanner = new Scanner(System.in);
-    TruckService truckService = new TruckService();
+    private TruckService truckService = new TruckService();
     public void truckController(){
         boolean flag = true;
         do {

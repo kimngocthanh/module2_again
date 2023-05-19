@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MotoBikerRepository implements IMotoBiker{
-    public static List<MotoBiker> motoBikers = new ArrayList<>();
+    private static List<MotoBiker> motoBikers = new ArrayList<>();
     static {
         MotoBiker motoBiker = new MotoBiker("28A-1234", "honda", "2018", "Kim Ngọc Thành", "10");
         MotoBiker motoBiker1 = new MotoBiker("28A-4321", "vison", "2018", "Kim Ngọc ", "10");

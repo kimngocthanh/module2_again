@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarRepository implements ICarRepository {
-    public static List<Car> carList = new ArrayList<>();
+    private static List<Car> carList = new ArrayList<>();
 
     static {
         Car car = new Car("29A-1234", "honda", "2018", "Kim Ngọc Thành", 7, "du lịch");

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ManufacturerRepository implements IManufacturerRepository {
-    public static List<Manufacturer> manufacturerList = new ArrayList<>();
+    private static List<Manufacturer> manufacturerList = new ArrayList<>();
     static {
         ss10.bai2.model.Manufacturer manufacturer = new ss10.bai2.model.Manufacturer("001", " honda", "hàn quốc");
         ss10.bai2.model.Manufacturer manufacturer1 = new ss10.bai2.model.Manufacturer("002", " honda", "nhật bản");

@@ -7,9 +7,9 @@ import java.util.Scanner;
 
 public class MenuController {
     Scanner scanner = new Scanner(System.in);
-    CarController carController = new CarController();
-    MotoBikerControler motoBikerControler = new MotoBikerControler();
-    TruckController truckController = new TruckController();
+    private CarController carController = new CarController();
+    private MotoBikerControler motoBikerControler = new MotoBikerControler();
+    private TruckController truckController = new TruckController();
     public void menuController(){
         boolean flag = true;
         do {

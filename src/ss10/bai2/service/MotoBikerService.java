@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MotoBikerService implements IMotoBikerService{
-    MotoBikerRepository motoBikerRepository = new MotoBikerRepository();
-    List<MotoBiker> motoBikerList = motoBikerRepository.displayMotoBiker();
-    Scanner scanner = new Scanner(System.in);
-    ManufacturerRepository manufacturerRepository = new ManufacturerRepository();
-    List<Manufacturer> manufacturerRepositoryList = manufacturerRepository.display();
+    private MotoBikerRepository motoBikerRepository = new MotoBikerRepository();
+    private List<MotoBiker> motoBikerList = motoBikerRepository.displayMotoBiker();
+    private Scanner scanner = new Scanner(System.in);
+    private ManufacturerRepository manufacturerRepository = new ManufacturerRepository();
+    private List<Manufacturer> manufacturerRepositoryList = manufacturerRepository.display();
 
     @Override
     public void addMotoBiker() {

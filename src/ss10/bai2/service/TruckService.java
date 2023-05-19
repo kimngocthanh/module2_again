@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class TruckService implements ITruckService {
-    TruckRepository truckRepository = new TruckRepository();
-    List<Truck> truckList = truckRepository.displayTruck();
-    Scanner scanner = new Scanner(System.in);
-    ManufacturerRepository manufacturerRepository = new ManufacturerRepository();
-    List<Manufacturer> manufacturerRepositoryList = manufacturerRepository.display();
+    private TruckRepository truckRepository = new TruckRepository();
+    private List<Truck> truckList = truckRepository.displayTruck();
+    private Scanner scanner = new Scanner(System.in);
+    private ManufacturerRepository manufacturerRepository = new ManufacturerRepository();
+    private List<Manufacturer> manufacturerRepositoryList = manufacturerRepository.display();
 
     @Override
     public void addTruck() {

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TruckRepository implements ITruckRepository{
-    public static List<Truck> truckList = new ArrayList<>();
+    private static List<Truck> truckList = new ArrayList<>();
     static {
         Truck truck = new Truck("27A-1234", "honda", "2018", "Kim Thành", "10");
         Truck truck1 = new Truck("27A-7892", "honda", "2019", "Ngọc Thành", "10");

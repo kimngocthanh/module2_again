@@ -8,9 +8,8 @@ import java.util.Scanner;
 
 public class CarController {
     Scanner scanner = new Scanner(System.in);
-    CarService carService = new CarService();
-    MotoBikerService motoBikerService = new MotoBikerService();
-    TruckService truckService = new TruckService();
+    private CarService carService = new CarService();
+
     public void carController(){
         boolean flag = true;
         do {
