@@ -67,9 +67,9 @@ public class TruckService implements ITruckService {
         boolean flag = true;
         System.out.print("nhập biển kiểm soát muốn xoá: ");
         String seaOfControl = scanner.nextLine();
-        for (Truck t : truckList) {
+        for (int i = 0; i< truckList.size(); i++) {
             flag = true;
-            if (seaOfControl.equals(t.getSeaOfControl())) {
+            if (seaOfControl.equals(truckList.get(i).getSeaOfControl())) {
                 flag = true;
                 System.out.print("bạn có chắc muốn xoá!\n" +
                         "1. Có\n" +
@@ -78,7 +78,7 @@ public class TruckService implements ITruckService {
                 String chose = scanner.nextLine();
                 switch (chose) {
                     case "1":
-                        truckRepository.removeTruck(t);
+                        truckRepository.removeTruck(i);
                         System.out.println("xoá thành công!");
                     case "2":
                         break;

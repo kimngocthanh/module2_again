@@ -17,8 +17,8 @@ public class MotoBikerControler {
                     "2. hiển thị motobiker\n" +
                     "3. xoá motobiker\n" +
                     "4. tìm kiếm motobiker\n" +
-                    "5. thoát" +
-                    "Nhập xe muốn thêm: ");
+                    "5. thoát\n" +
+                    "Chọn chức năng : ");
             String chose = scanner.nextLine();
             switch (chose){
                 case "1":

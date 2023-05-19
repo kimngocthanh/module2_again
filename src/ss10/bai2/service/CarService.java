@@ -64,11 +64,10 @@ public class CarService implements ICarService {
     @Override
     public void removeCar() {
         carList = carRepository.displayCar();
-
         System.out.print("nhập biển kiểm soát muốn xoá: ");
         String seaOfControl = scanner.nextLine();
-        for (Car c : carList) {
-            if (seaOfControl.equals(c.getSeaOfControl())) {
+        for (int i=0;i<carList.size(); i++ ) {
+            if (seaOfControl.equals(carList.get(i).getSeaOfControl())) {
                 System.out.print("bạn có chắc muốn xoá!\n" +
                         "1. Có\n" +
                         "2. Không\n" +
@@ -76,7 +75,7 @@ public class CarService implements ICarService {
                 String chose = scanner.nextLine();
                 switch (chose) {
                     case "1":
-                        carRepository.removeCar(c);
+                        carRepository.removeCar(i);
                         System.out.println("xoá thành công!");
                     case "2":
                         break;

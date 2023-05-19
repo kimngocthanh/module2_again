@@ -16,8 +16,8 @@ public class TruckController {
                     "2. hiển thị tải\n" +
                     "3. xoá tải\n" +
                     "4. tìm kiếm\n" +
-                    "5. thoát" +
-                    "Nhập xe muốn thêm: ");
+                    "5. thoát\n" +
+                    "Nhập chức năng: ");
             String chose = scanner.nextLine();
             switch (chose){
                 case "1":

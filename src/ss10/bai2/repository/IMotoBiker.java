@@ -10,7 +10,7 @@ public interface IMotoBiker {
 
     void addMotoBiker(MotoBiker motoBiker);
 
-    void removeMotoBiker(MotoBiker motoBiker);
+    void removeMotoBiker(int index);
 
     boolean findMotoBiker(String seaOfControl);
 }

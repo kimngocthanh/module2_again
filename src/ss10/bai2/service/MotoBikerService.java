@@ -67,9 +67,9 @@ public class MotoBikerService implements IMotoBikerService{
         boolean flag = true;
         System.out.print("nhập biển kiểm soát muốn xoá: ");
         String seaOfControl = scanner.nextLine();
-        for (MotoBiker m : motoBikerList) {
+        for (int i = 0; i< motoBikerList.size();i++) {
             flag = true;
-            if (seaOfControl.equals(m.getSeaOfControl())) {
+            if (seaOfControl.equals(motoBikerList.get(i).getSeaOfControl())) {
                 flag = true;
                 System.out.print("bạn có chắc muốn xoá!\n" +
                         "1. Có\n" +
@@ -78,7 +78,7 @@ public class MotoBikerService implements IMotoBikerService{
                 String chose = scanner.nextLine();
                 switch (chose) {
                     case "1":
-                        motoBikerRepository.removeMotoBiker(m);
+                        motoBikerRepository.removeMotoBiker(i);
                         System.out.println("xoá thành công!");
                     case "2":
                         break;

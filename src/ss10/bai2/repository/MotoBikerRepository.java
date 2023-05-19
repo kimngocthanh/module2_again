@@ -34,8 +34,8 @@ public class MotoBikerRepository implements IMotoBiker{
     }
 
     @Override
-    public void removeMotoBiker(MotoBiker motoBiker) {
-        motoBikers.remove(motoBiker);
+    public void removeMotoBiker(int index) {
+        motoBikers.remove(index);
     }
 
     @Override

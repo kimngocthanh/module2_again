@@ -9,7 +9,7 @@ public interface ICarRepository {
 
     void addCar(Car car);
 
-    void removeCar(Car car);
+    void removeCar(int index);
 
     boolean findCar(String seaOfControl);
 }

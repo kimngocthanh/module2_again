@@ -35,8 +35,8 @@ public class TruckRepository implements ITruckRepository{
     }
 
     @Override
-    public void removeTruck(Truck truck) {
-        truckList.remove(truck);
+    public void removeTruck(int index) {
+        truckList.remove(index);
     }
 
     @Override

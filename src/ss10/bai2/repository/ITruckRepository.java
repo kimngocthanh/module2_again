@@ -10,7 +10,7 @@ public interface ITruckRepository {
 
     void addTruck(Truck truck);
 
-    void removeTruck( Truck truck);
+    void removeTruck(int index);
 
     boolean findTruck(String seaOfControl);
 }
