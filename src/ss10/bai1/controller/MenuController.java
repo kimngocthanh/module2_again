@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class MenuController {
     Scanner scanner =new Scanner(System.in);
-    FruitService fruitService = new FruitService();
+    private FruitService fruitService = new FruitService();
     public void menuController() {
         boolean flag = true;
         do{

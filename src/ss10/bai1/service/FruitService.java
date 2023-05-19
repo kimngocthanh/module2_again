@@ -8,8 +8,7 @@ import java.util.Scanner;
 
 public class FruitService implements IFruitService {
     Scanner scanner = new Scanner(System.in);
-    FruitRepository fruitRepository = new FruitRepository();
-    List<Fruit> fruitList = fruitRepository.display();
+    private FruitRepository fruitRepository = new FruitRepository();
 
 
     @Override
@@ -33,7 +32,7 @@ public class FruitService implements IFruitService {
 
     @Override
     public void display() {
-        fruitList = fruitRepository.display();
+        List<Fruit> fruitList = fruitRepository.display();
         for (Fruit f : fruitList) {
             System.out.println(f);
         }
