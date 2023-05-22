@@ -1,11 +1,10 @@
-package ss10.bai2.view;
+package ss12.view;
 
-import ss10.bai2.controller.MenuController;
+import ss12.controller.MenuController;
 
 public class Main {
     public static void main(String[] args) {
         MenuController menuController = new MenuController();
-        menuController.menuController();
+        menuController.displayMenu();
     }
-
 }
