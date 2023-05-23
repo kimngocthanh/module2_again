@@ -11,7 +11,6 @@ public interface IFruitRepository {
 
     void deleteFruit(Fruit fruit);
 
-    void editFruit(Fruit fruit);
 
     Fruit getIdFruid(String idFruit);
 
