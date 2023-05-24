@@ -6,10 +6,11 @@ import java.util.Scanner;
 
 public class MenuController {
     private ExpenseService expenseService = new ExpenseService();
-    public void menuController(){
+
+    public void menuController() {
         boolean flag = true;
         Scanner scanner = new Scanner(System.in);
-        do{
+        do {
             System.out.print("----------Quản Lý Công Việc----------\n" +
                     "1. Hiển Thị \n" +
                     "2. Thêm \n" +
@@ -20,7 +21,7 @@ public class MenuController {
                     "0. Thoát\n" +
                     "Mời bạn chọn chức năng: ");
             String chose = scanner.nextLine();
-            switch (chose){
+            switch (chose) {
                 case "1":
                     //hiển thị
                     expenseService.display();
@@ -46,13 +47,13 @@ public class MenuController {
                     expenseService.findName();
                     break;
                 case "0":
-                    flag= false;
+                    flag = false;
                     break;
                 default:
                     System.out.println("nhập sai chức năng mời nhập lại!");
                     break;
             }
-        }while (flag);
+        } while (flag);
 
     }
 }

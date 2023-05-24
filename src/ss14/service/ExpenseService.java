@@ -1,7 +1,7 @@
-package ss13.service;
+package ss14.service;
 
-import ss13.model.Expense;
-import ss13.repository.ExpenseRepository;
+import ss14.model.Expense;
+import ss14.repository.ExpenseRepository;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -157,5 +157,41 @@ public class ExpenseService implements IExpenseService {
             }
         }
 
+    }
+
+    @Override
+    public void sortName() {
+        List<Expense> expenseNameList = expenseRepository.display();
+        Collections.sort(expenseNameList, new Comparator<Expense>() {
+            @Override
+            public int compare(Expense o1, Expense o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
+        expenseRepository.sortName(expenseNameList);
+        for (Expense e: expenseNameList) {
+            System.out.println(e);
+        }
+    }
+
+    @Override
+    public void sortPrice() {
+        List<Expense> expensePriceList = expenseRepository.display();
+        Collections.sort(expensePriceList, new Comparator<Expense>() {
+            @Override
+            public int compare(Expense o1, Expense o2) {
+                if(o1.getPrice()-o2.getPrice()==0){
+                    return o1.getName().compareTo(o2.getName());
+                }else if(o1.getPrice()-o2.getPrice()>0){
+                    return 1;
+                }else {
+                    return -1;
+                }
+            }
+        });
+        expenseRepository.sortPrice(expensePriceList);
+        for (Expense e: expensePriceList) {
+            System.out.println(e);
+        }
     }
 }

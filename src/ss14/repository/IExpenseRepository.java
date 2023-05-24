@@ -1,6 +1,6 @@
-package ss13.repository;
+package ss14.repository;
 
-import ss13.model.Expense;
+import ss14.model.Expense;
 
 import java.util.List;
 
@@ -16,5 +16,9 @@ public interface IExpenseRepository {
     Expense findId(String id);
 
     List<Expense> findName(String name);
+
+    List<Expense> sortName(List<Expense> expenseNameList);
+
+    List<Expense> sortPrice(List<Expense> expensePriceList);
 
 }

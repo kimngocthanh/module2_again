@@ -1,4 +1,4 @@
-package ss13.model;
+package ss14.model;
 
 public class Expense {
     private String id;

@@ -1,6 +1,7 @@
-package ss13.repository;
+package ss14.repository;
 
-import ss13.model.Expense;
+import ss14.model.Expense;
+import ss14.repository.IExpenseRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,10 +57,22 @@ public class ExpenseRepository implements IExpenseRepository {
     @Override
     public List<Expense> findName(String name) {
         List<Expense> list = new ArrayList<>();
-        for (Expense e: expenseList) {
-            if(e.getName().contains(name)){
+        for (Expense e : expenseList) {
+            if (e.getName().contains(name)) {
                 list.add(e);
             }
-        }return list;
+        }
+        return list;
+    }
+
+    @Override
+    public List<Expense> sortName(List<Expense> expenseNameList) {
+        return expenseNameList;
+    }
+
+    @Override
+    public List<Expense> sortPrice(List<Expense> expensePriceList) {
+        return expensePriceList;
     }
 }
+

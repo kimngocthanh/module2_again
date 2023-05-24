@@ -1,4 +1,5 @@
-package ss13.service;
+package ss14.service;
+
 
 public interface IExpenseService {
     void display();
@@ -13,5 +14,7 @@ public interface IExpenseService {
 
     void findName();
 
+    void sortName();
 
+    void sortPrice();
 }
