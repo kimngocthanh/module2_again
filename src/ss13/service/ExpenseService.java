@@ -148,10 +148,11 @@ public class ExpenseService implements IExpenseService {
     public void findName() {
         System.out.print("nhập name muốn tìm kiếm: ");
         String name = scanner.nextLine();
-        if (expenseRepository.findName(name).size() == 0) {
+        List<Expense> expenseList = expenseRepository.findName(name);
+        if (expenseList.size() == 0) {
             System.out.println("ko có chi tiêu cần tìm");
         } else {
-            List<Expense> expenseList = expenseRepository.findName(name);
+
             for (Expense e : expenseList) {
                 System.out.println(e);
             }
