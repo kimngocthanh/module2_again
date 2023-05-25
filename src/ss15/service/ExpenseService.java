@@ -1,7 +1,7 @@
-package ss14.service;
+package ss15.service;
 
-import ss14.model.Expense;
-import ss14.repository.ExpenseRepository;
+import ss15.model.Expense;
+import ss15.repository.ExpenseRepository;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -23,8 +23,25 @@ public class ExpenseService implements IExpenseService {
 
     @Override
     public void add() {
-        System.out.print("nhập id: ");
-        String id = scanner.nextLine();
+        String id;
+        boolean flag = false;
+        List<Expense> expenseList = expenseRepository.display();
+        do {
+            System.out.print("nhập id: ");
+            id = scanner.nextLine();
+            try {
+                for (Expense e : expenseList) {
+                    if (id.equals(e.getId())) {
+                        throw new UniqueException("trùng id");
+                    }
+                }
+                flag = true;
+            } catch (UniqueException uniqueException) {
+                System.out.println(uniqueException.getMessage());
+                System.out.println("Mời nhập lại");
+            }
+        } while (!flag);
+
         System.out.print("nhập tên: ");
         String name = scanner.nextLine();
         System.out.print("nhập ngày chi tiêU: ");
@@ -42,8 +59,28 @@ public class ExpenseService implements IExpenseService {
     public void remove() {
         boolean flag = false;
         List<Expense> expenseList = expenseRepository.display();
-        System.out.print("nhập id muốn xoá: ");
-        String id = scanner.nextLine();
+        String id = null;
+        boolean check = false;
+        do {
+            System.out.print("nhập id muốn xoá: ");
+            id = scanner.nextLine();
+            boolean flag1 = false;
+            try {
+                for (Expense e : expenseList) {
+                    if (id.equals(e.getId())) {
+                        flag1 = true;
+                        check = true;
+                    }
+                }
+                if (!flag1) {
+                    throw new IdNotFoundException("ko có id muốn xoá");
+                }
+            } catch (IdNotFoundException e) {
+                System.out.println(e.getMessage());
+                System.out.println("mời nhập lại id muốn xoá");
+            }
+        } while (!check);
+
         for (int i = 0; i < expenseList.size(); i++) {
             if (id.equals(expenseList.get(i).getId())) {
                 System.out.print("bạn có chắc muốn xoá\n" +
@@ -170,7 +207,7 @@ public class ExpenseService implements IExpenseService {
             }
         });
         expenseRepository.sortName(expenseNameList);
-        for (Expense e: expenseNameList) {
+        for (Expense e : expenseNameList) {
             System.out.println(e);
         }
     }
@@ -181,17 +218,17 @@ public class ExpenseService implements IExpenseService {
         Collections.sort(expensePriceList, new Comparator<Expense>() {
             @Override
             public int compare(Expense o1, Expense o2) {
-                if(o1.getPrice()-o2.getPrice()==0){
+                if (o1.getPrice() - o2.getPrice() == 0) {
                     return o1.getName().compareTo(o2.getName());
-                }else if(o1.getPrice()-o2.getPrice()>0){
+                } else if (o1.getPrice() - o2.getPrice() > 0) {
                     return 1;
-                }else {
+                } else {
                     return -1;
                 }
             }
         });
         expenseRepository.sortPrice(expensePriceList);
-        for (Expense e: expensePriceList) {
+        for (Expense e : expensePriceList) {
             System.out.println(e);
         }
     }

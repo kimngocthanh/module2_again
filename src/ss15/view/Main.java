@@ -1,0 +1,10 @@
+package ss15.view;
+
+import ss15.controller.MenuController;
+
+public class Main {
+    public static void main(String[] args) {
+        MenuController menuController = new MenuController();
+        menuController.menuController();
+    }
+}
