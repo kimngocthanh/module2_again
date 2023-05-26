@@ -1,14 +1,16 @@
-package ss15.service;
+package ss16.service;
 
-import ss15.model.Expense;
-import ss15.repository.ExpenseRepository;
+import ss16.model.Expense;
+import ss16.repository.ExpenseRepository;
+import ss16.service.IdNotFoundException;
+import ss16.service.UniqueException;
 
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
-public class ExpenseService implements IExpenseService {
+public class ExpenseService implements IExpenseService{
     private Scanner scanner = new Scanner(System.in);
     private ExpenseRepository expenseRepository = new ExpenseRepository();
 

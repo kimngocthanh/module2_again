@@ -44,7 +44,8 @@ public class CarService implements ICarService {
                     flag = false;
                     check = true;
                 }
-            }if(!check){
+            }
+            if (!check) {
                 System.out.println("ko có id mời nhập lại!");
             }
         } while (flag);
@@ -54,8 +55,18 @@ public class CarService implements ICarService {
         String owner = scanner.nextLine();
         System.out.print("nhập kiểu xe: ");
         String typeCar = scanner.nextLine();
-        System.out.print("nhập số chỗ ngồi");
-        int numberOfSeats = Integer.parseInt(scanner.nextLine());
+        int numberOfSeats=0;
+        do {
+            try {
+                System.out.print("nhập số chỗ ngồi");
+                numberOfSeats = Integer.parseInt(scanner.nextLine());
+                flag=true;
+            } catch (NumberFormatException e) {
+                System.out.println("nhập sai định dạng mời nhập lại: ");
+            }
+
+        } while (!flag);
+
         Car car = new Car(seaOfControl, nameFacturer, yearOfManufacture, owner, numberOfSeats, typeCar);
         carRepository.addCar(car);
         System.out.println("add oke");
@@ -66,7 +77,7 @@ public class CarService implements ICarService {
         carList = carRepository.displayCar();
         System.out.print("nhập biển kiểm soát muốn xoá: ");
         String seaOfControl = scanner.nextLine();
-        for (int i=0;i<carList.size(); i++ ) {
+        for (int i = 0; i < carList.size(); i++) {
             if (seaOfControl.equals(carList.get(i).getSeaOfControl())) {
                 System.out.print("bạn có chắc muốn xoá!\n" +
                         "1. Có\n" +
@@ -91,7 +102,7 @@ public class CarService implements ICarService {
         System.out.print("nhập biển kiểm soát: ");
         String seaOfControl = scanner.nextLine();
         for (int i = 0; i < carList.size(); i++) {
-            if(seaOfControl.equals(carList.get(i).getSeaOfControl())){
+            if (seaOfControl.equals(carList.get(i).getSeaOfControl())) {
                 carRepository.findCar(seaOfControl);
             }
         }
