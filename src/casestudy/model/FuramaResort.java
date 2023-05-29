@@ -8,7 +8,7 @@ public abstract class FuramaResort {
     private int numberPerson;
     private String typeRental;
 
-    public FuramaResort(){
+    public FuramaResort() {
 
     }
 
@@ -71,8 +71,7 @@ public abstract class FuramaResort {
 
     @Override
     public String toString() {
-        return "FuramaResort{" +
-                "idService='" + idService + '\'' +
+        return "idService='" + idService + '\'' +
                 ", nameService='" + nameService + '\'' +
                 ", area='" + area + '\'' +
                 ", rentalCosts=" + rentalCosts +

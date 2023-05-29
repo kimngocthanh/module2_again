@@ -56,7 +56,6 @@ public class ExpenseService implements IExpenseService {
 
     @Override
     public void remove() {
-        boolean flag = false;
         List<Expense> expenseList = expenseRepository.display();
         String id = null;
         boolean check = false;
@@ -65,10 +64,21 @@ public class ExpenseService implements IExpenseService {
             id = scanner.nextLine();
             boolean flag1 = false;
             try {
-                for (Expense e : expenseList) {
-                    if (id.equals(e.getId())) {
+                for (int i = 0; i<expenseList.size(); i++ ) {
+                    if (id.equals(expenseList.get(i).getId())) {
                         flag1 = true;
                         check = true;
+                        System.out.print("bạn có chắc muốn xoá\n" +
+                                "1. Có\n" +
+                                "2. Không\n" +
+                                "mời bạn chọn: ");
+                        String chose = scanner.nextLine();
+                        if (chose.equals("1")) {
+                            expenseRepository.delete(i);
+                            System.out.println("xoá oke!");
+                        } else {
+                            break;
+                        }
                     }
                 }
                 if (!flag1) {
@@ -80,26 +90,6 @@ public class ExpenseService implements IExpenseService {
             }
         } while (!check);
 
-        for (int i = 0; i < expenseList.size(); i++) {
-            if (id.equals(expenseList.get(i).getId())) {
-                System.out.print("bạn có chắc muốn xoá\n" +
-                        "1. Có\n" +
-                        "2. Không\n" +
-                        "mời bạn chọn: ");
-                String chose = scanner.nextLine();
-                if (chose.equals("1")) {
-                    expenseRepository.delete(i);
-                    System.out.println("xoá oke!");
-                } else {
-                    flag = true;
-                    break;
-                }
-                flag = true;
-            }
-        }
-        if (!flag) {
-            System.out.println("ko có id muốn xoá");
-        }
     }
 
     @Override

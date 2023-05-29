@@ -10,7 +10,7 @@ public class EmployeeManagement {
             System.out.print("----------EmployeeManagement----------\n" +
                     "1. Display list empolyee\n" +
                     "2. Add new employee\n" +
-                    "3. Edit empployee\n" +
+                    "3. Edit employee\n" +
                     "4. Return Menu\n" +
                     "Mời bạn chọn chức năng: ");
             String chose = scanner.nextLine();
