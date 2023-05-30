@@ -3,6 +3,7 @@ package casestudy.controller;
 import java.util.Scanner;
 
 public class FuramaController {
+    private CustomerManagement customerManagement = new CustomerManagement();
     public void menuFuramaResort(){
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
@@ -22,6 +23,7 @@ public class FuramaController {
                     break;
                 case "2":
                     // Customer
+                    customerManagement.CustomerManagement();
                     break;
                 case "3":
                     //Facility

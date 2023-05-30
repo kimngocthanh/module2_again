@@ -1,9 +1,12 @@
 package casestudy.controller;
 
+import casestudy.service.CustomerService;
+
 import java.util.Scanner;
 
 public class CustomerManagement {
     Scanner scanner = new Scanner(System.in);
+    private CustomerService customerService = new CustomerService();
     public void CustomerManagement() {
         boolean flag = true;
         do {
@@ -17,12 +20,15 @@ public class CustomerManagement {
             switch (chose) {
                 case "1":
                     // display
+                    customerService.displayCustomer();
                     break;
                 case "2":
                     //add
+                    customerService.addCustomer();
                     break;
                 case "3":
                     //edit
+                    customerService.editCustomer();
                     break;
                 case "4":
                     flag = false;
