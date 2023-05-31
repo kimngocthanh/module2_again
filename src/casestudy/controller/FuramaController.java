@@ -1,9 +1,13 @@
 package casestudy.controller;
 
+import casestudy.service.EmployeeService;
+
 import java.util.Scanner;
 
 public class FuramaController {
     private CustomerManagement customerManagement = new CustomerManagement();
+
+    private EmployeeManagement employeeManagement = new EmployeeManagement();
     public void menuFuramaResort(){
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
@@ -20,10 +24,11 @@ public class FuramaController {
             switch (chose){
                 case "1":
                     //employee management
+                    employeeManagement.employeeManagement();
                     break;
                 case "2":
                     // Customer
-                    customerManagement.CustomerManagement();
+                    customerManagement.customerManagement();
                     break;
                 case "3":
                     //Facility

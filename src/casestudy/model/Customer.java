@@ -40,9 +40,5 @@ public class Customer extends Person {
                 '}';
     }
 
-    public String writeAndReadCustomer() {
-        return super.getId() + "," + super.getName() + "," + super.getDate() + "," + super.getGender() + "," +
-                super.getCode() + "," + super.getTelephone() + "," + super.getEmail() + "," + this.typeCustomer + "," +
-                this.address;
-    }
+
 }

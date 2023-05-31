@@ -1,20 +1,22 @@
 package casestudy.common;
 
 import casestudy.model.Customer;
-import casestudy.model.Employee;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReadAndWriteCustomer {
+
     public static void writeToFile(String Path, List<Customer> customerList){
         File file = new File(Path);
         try {
             FileWriter fileWriter = new FileWriter(file);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (Customer c: customerList) {
-                bufferedWriter.write(c.writeAndReadCustomer());
+                bufferedWriter.write(c.getId() + "," + c.getName() + "," + c.getDate() + "," + c.getGender() + "," +
+                        c.getCode() + "," + c.getTelephone() + "," + c.getEmail() + "," + c.getTypeCustomer() + "," +
+                        c.getAddress());
                 bufferedWriter.newLine();
             }
             bufferedWriter.flush();

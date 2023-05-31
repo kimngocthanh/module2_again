@@ -87,7 +87,8 @@ public abstract class Person {
                 ", gender='" + gender + '\'' +
                 ", code='" + code + '\'' +
                 ", telephone='" + telephone + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+                ", email='" + email + '\'' ;
     }
+
+
 }

@@ -4,6 +4,7 @@ package casestudy.service;
 import casestudy.model.Customer;
 import casestudy.repository.CustomerRepository;
 import casestudy.validate.CustomerRegex;
+import casestudy.validate.UniqueException;
 
 import java.util.List;
 import java.util.Scanner;
@@ -23,15 +24,28 @@ public class CustomerService implements ICustomerService {
     @Override
     public void addCustomer() {
         List<Customer> customerList = customerRepository.displayCustomer();
-        //String id, String name, String date, String gender, String code, String telephone, String email, String typeCustomer, String address
+        //String id, String name, String date, String gender, String code, String telephone, String email,
+        // String typeCustomer, String address
         String idCustomer = "";
         do {
-            System.out.print("Nhập id khách hàng theo đúng định dạng KH-XXXX: ");
-            idCustomer = scanner.nextLine();
-            if (!CustomerRegex.checkRegexIdCustomer(idCustomer)) {
-                System.out.println("Nhập sai định dạng mời nhập lại!");
+            try {
+                System.out.print("Nhập id khách hàng theo đúng định dạng KH-XXXX: ");
+                idCustomer = scanner.nextLine();
+                if (!CustomerRegex.checkRegexIdCustomer(idCustomer)) {
+                    System.out.println("Nhập sai định dạng mời nhập lại!");
+                    continue;
+                }
+                for (Customer c : customerList) {
+                    if (idCustomer.equals(c.getId())) {
+                        throw new UniqueException("Id khách hàng bị trùng nhập lại id! ");
+                    }
+                }
+                break;
+            } catch (UniqueException e) {
+                System.out.println(e.getMessage());
             }
-        } while (!CustomerRegex.checkRegexIdCustomer(idCustomer));
+
+        } while (true);
 
         String nameCustomer = "";
         do {
@@ -152,11 +166,16 @@ public class CustomerService implements ICustomerService {
     @Override
     public void editCustomer() {
         List<Customer> customerList = customerRepository.displayCustomer();
+        for (Customer c : customerList) {
+            System.out.println(c);
+        }
         System.out.print("Nhập idCustomer cần sửa: ");
         String idCustomer = scanner.nextLine();
+        boolean checkid = false;
         for (int i = 0; i < customerList.size(); i++) {
             if (idCustomer.equals(customerList.get(i).getId())) {
                 boolean flag = false;
+                checkid = true;
                 do {
                     System.out.print("1. Tên khách hàng.\n" +
                             "2. Ngày sinh khách hàng\n" +
@@ -208,6 +227,7 @@ public class CustomerService implements ICustomerService {
                             break;
                         case "3":
                             String genderCustomer = "";
+                            boolean flagGender = false;
                             do {
                                 System.out.print("1. nam\n" +
                                         "2. nữ\n" +
@@ -216,17 +236,17 @@ public class CustomerService implements ICustomerService {
                                 switch (check) {
                                     case "1":
                                         genderCustomer = "nam";
-                                        flag = true;
+                                        flagGender = true;
                                         break;
                                     case "2":
                                         genderCustomer = "nữ";
-                                        flag = true;
+                                        flagGender = true;
                                         break;
                                     default:
                                         System.out.println("nhập sai mời chọn lại giới tính! ");
                                         break;
                                 }
-                            } while (!flag);
+                            } while (!flagGender);
                             customer = new Customer(idCustomer, customerList.get(i).getName(),
                                     customerList.get(i).getDate(), genderCustomer, customerList.get(i).getCode(),
                                     customerList.get(i).getTelephone(), customerList.get(i).getEmail(),
@@ -239,10 +259,10 @@ public class CustomerService implements ICustomerService {
                             do {
                                 System.out.print("Nhập Căn cước công dân muốn sửa 9 số hoặc 12 số: ");
                                 codeCustomer = scanner.nextLine();
-                                if(!CustomerRegex.checkRegexCodeCusTomer(codeCustomer)){
+                                if (!CustomerRegex.checkRegexCodeCusTomer(codeCustomer)) {
                                     System.out.println("Nhập sai định dạng căn cước công dân nhập lại !");
                                 }
-                            }while (!CustomerRegex.checkRegexCodeCusTomer(codeCustomer));
+                            } while (!CustomerRegex.checkRegexCodeCusTomer(codeCustomer));
                             customer = new Customer(idCustomer, customerList.get(i).getName(),
                                     customerList.get(i).getDate(), customerList.get(i).getGender(), codeCustomer,
                                     customerList.get(i).getTelephone(), customerList.get(i).getEmail(),
@@ -251,24 +271,116 @@ public class CustomerService implements ICustomerService {
                             System.out.println("Sửa Căn cước công dân thành công! ");
                             break;
                         case "5":
-                            String telephone = "";
+                            String telephoneCustomer = "";
                             do {
                                 System.out.print("Nhập số điện thoạt cần sửa bắt đầu từ 0 và đủ 10 số: ");
-                                telephone = scanner.nextLine();
-                                if(!CustomerRegex.checkRegexTelephoneCustomer(telephone)){
+                                telephoneCustomer = scanner.nextLine();
+                                if (!CustomerRegex.checkRegexTelephoneCustomer(telephoneCustomer)) {
                                     System.out.println("Nhập sai định dạng số điện thoại mời nhập lại! ");
                                 }
-                            }while (!CustomerRegex.checkRegexTelephoneCustomer(telephone));
+                            } while (!CustomerRegex.checkRegexTelephoneCustomer(telephoneCustomer));
                             customer = new Customer(idCustomer, customerList.get(i).getName(),
                                     customerList.get(i).getDate(), customerList.get(i).getGender(),
-                                    customerList.get(i).getCode(), telephone, customerList.get(i).getEmail(),
+                                    customerList.get(i).getCode(), telephoneCustomer, customerList.get(i).getEmail(),
                                     customerList.get(i).getTypeCustomer(), customerList.get(i).getAddress());
                             customerRepository.editCustomer(i, customer);
                             System.out.println("Sửa số điện thoại thành công! ");
                             break;
+                        case "6":
+                            String emailCustomer = "";
+                            do {
+                                System.out.print("Nhập lại email khách hàng theo dúng định dạng username@domain.extension: ");
+                                emailCustomer = scanner.nextLine();
+                                if (!CustomerRegex.checkRegexEmailCustomer(emailCustomer)) {
+                                    System.out.println("Nhập sai định dạng mời nhập lại! ");
+                                }
+                            } while (!CustomerRegex.checkRegexEmailCustomer(emailCustomer));
+                            customer = new Customer(idCustomer, customerList.get(i).getName(),
+                                    customerList.get(i).getDate(), customerList.get(i).getGender(),
+                                    customerList.get(i).getCode(), customerList.get(i).getTelephone(), emailCustomer,
+                                    customerList.get(i).getTypeCustomer(), customerList.get(i).getAddress());
+                            customerRepository.editCustomer(i, customer);
+                            System.out.println("Sửa email khách hàng thành công! ");
+                            break;
+                        case "7":
+                            String typeCustomer = "";
+                            boolean flagType = false;
+                            do {
+                                System.out.print("1. Diamond\n" +
+                                        "2. Platinum\n" +
+                                        "3. Gold\n" +
+                                        "4. Silver\n" +
+                                        "5. Member\n" +
+                                        "Chọn loại khách hàng: ");
+                                String check = scanner.nextLine();
+                                switch (check) {
+                                    case "1":
+                                        typeCustomer = "Diamond";
+                                        flagType = true;
+                                        break;
+                                    case "2":
+                                        typeCustomer = "Platinum";
+                                        flagType = true;
+                                        break;
+                                    case "3":
+                                        typeCustomer = "Gold";
+                                        flagType = true;
+                                        break;
+                                    case "4":
+                                        typeCustomer = "Silver";
+                                        flagType = true;
+                                        break;
+                                    case "5":
+                                        typeCustomer = "Member";
+                                        flagType = true;
+                                        break;
+                                    default:
+                                        System.out.println("Chọn sai loại khách hàng mời nhập lại! ");
+                                        break;
+                                }
+                            } while (!flagType);
+                            customer = new Customer(idCustomer, customerList.get(i).getName(),
+                                    customerList.get(i).getDate(), customerList.get(i).getGender(),
+                                    customerList.get(i).getCode(), customerList.get(i).getTelephone(),
+                                    customerList.get(i).getEmail(), typeCustomer, customerList.get(i).getAddress());
+                            customerRepository.editCustomer(i, customer);
+                            System.out.println("Sửa loại khách hàng thành công! ");
+                            break;
+                        case "8":
+                            System.out.print("Nhập lại địa chỉ khách hàng muốn thay đổi: ");
+                            String addressCustomer = scanner.nextLine();
+                            customer = new Customer(idCustomer, customerList.get(i).getName(),
+                                    customerList.get(i).getDate(), customerList.get(i).getGender(),
+                                    customerList.get(i).getCode(), customerList.get(i).getTelephone(),
+                                    customerList.get(i).getEmail(), customerList.get(i).getTypeCustomer(), addressCustomer);
+                            customerRepository.editCustomer(i, customer);
+                            System.out.println("Sửa địa chỉ khách hàng thành công! ");
+                            break;
+                        case "9":
+                            System.out.print("Bạn có chắc muốn thoát chỉnh sửa\n" +
+                                    "1. Có\n" +
+                                    "2. Không\n" +
+                                    "Mời bạn chọn: ");
+                            chose = scanner.nextLine();
+                            switch (chose) {
+                                case "1":
+                                    flag = true;
+                                    break;
+                                case "2":
+                                    break;
+                                default:
+                                    System.out.println("Chọn sai mời chọn lại chức năng! ");
+                                    break;
+                            }
+                        default:
+                            System.out.println("Chọn sai chức năng mời chọn lại thuộc tính muốn sửa! ");
+                            break;
                     }
-                } while (flag);
+                } while (!flag);
             }
+        }
+        if (!checkid) {
+            System.out.println("ko có id bạn muốn sửa. ");
         }
     }
 }
