@@ -1,29 +1,34 @@
 package test;
 
-public class Test {
-    public static boolean solution(int[] arr) {
-        int n = arr.length;
-        for (int i = 0; i < n; i++) {
-            int sumLeft = 0;
-            int sumRight = 0;
-            for (int j = 0; j < i; j++) {
-                sumLeft += arr[j];
+import java.util.Arrays;
 
+public class Test {
+    public static int[] solution(int[] a) {
+        int min;
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == -1) {
+                continue;
             }
-            for (int j = i + 1; j < n; j++) {
-                sumRight += arr[j];
-            }
-            if (sumLeft == sumRight) {
-                return true;
+            else {
+                min = i;
+                for (int j = i + 1; j < a.length; j++)
+                    if (a[j] < a[min])
+                        min = j;
+                if (min != i) {
+                    int temp = a[min];
+                    a[min] = a[i];
+                    a[i] = temp;
+                }
             }
         }
-        return false;
+        return a;
     }
 
+
     public static void main(String[] args) {
-        int[] a = {1, 2, 3, 3};
+        int[] a = {-1, 150, 190, 170, -1, -1, 160, 180};
         Test test = new Test();
-        System.out.println(test.solution(a));
+        System.out.println(Arrays.toString(test.solution(a)));
     }
 
 }

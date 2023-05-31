@@ -17,9 +17,19 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public void displayEmployee() {
         List<Employee> employeeList = employeeRepository.displayEmployee();
+        System.out.println("+---------------+--------------------+----------------+-------------+--------------------+----------------+" +
+                "--------------------+--------------------+-------------+------------+");
+        System.out.println("| Mã nhân viên  | Tên nhân viên      | Ngày sinh      | Giới tính   | Căn cước công dân  | Số điện thoại  |" +
+                " Email              | Trình độ           | Vị Trí      | Lương      |");
         for (Employee e : employeeList) {
-            System.out.println(e);
+            System.out.println("+---------------+--------------------+----------------+-------------+--------------------+----------------+" +
+                    "--------------------+--------------------+-------------+------------+");
+            System.out.printf("|%-15s|%-20s|%-16s|%-13s|%-20s|%-16s|%-20s|%-20s|%-13s|%-12s|\n",
+                    e.getId(), e.getName(), e.getDate(), e.getGender(), e.getCode(), e.getTelephone(),
+                    e.getEmail(), e.getLevel(), e.getLocation(), e.getWage());
         }
+        System.out.println("+---------------+--------------------+----------------+-------------+--------------------+----------------+" +
+                "--------------------+--------------------+-------------+------------+");
     }
 
     @Override
@@ -211,9 +221,19 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public void setEmployee() {
         List<Employee> employeeList = employeeRepository.displayEmployee();
+        System.out.println("+---------------+--------------------+----------------+-------------+--------------------+----------------+" +
+                "--------------------+--------------------+-------------+------------+");
+        System.out.println("| Mã nhân viên  | Tên nhân viên      | Ngày sinh      | Giới tính   | Căn cước công dân  | Số điện thoại  |" +
+                " Email              | Trình độ           | Vị Trí      | Lương      |");
         for (Employee e : employeeList) {
-            System.out.println(e);
+            System.out.println("+---------------+--------------------+----------------+-------------+--------------------+----------------+" +
+                    "--------------------+--------------------+-------------+------------+");
+            System.out.printf("|%-15s|%-20s|%-16s|%-13s|%-20s|%-16s|%-20s|%-20s|%-13s|%-12s|\n",
+                    e.getId(), e.getName(), e.getDate(), e.getGender(), e.getCode(), e.getTelephone(),
+                    e.getEmail(), e.getLevel(), e.getLocation(), e.getWage());
         }
+        System.out.println("+---------------+--------------------+----------------+-------------+--------------------+----------------+" +
+                "--------------------+--------------------+-------------+------------+");
         System.out.print("Nhập id nhân viên cần sửa: ");
         String idEmployee = scanner.nextLine();
         boolean checkid = false;

@@ -16,9 +16,19 @@ public class CustomerService implements ICustomerService {
     @Override
     public void displayCustomer() {
         List<Customer> customerList = customerRepository.displayCustomer();
+        System.out.println("+----------------+--------------------+----------------+-------------+--------------------+---------------+" +
+                "---------------+-------------------+---------------+");
+        System.out.println("| Mã khách hàng  | Tên khách hàng     | Ngày sinh      | Giới tính   | Căn cước công dân  | Số điện thoại |" +
+                " Email         | Loại khách hàng   | Địa chỉ       |");
         for (Customer c : customerList) {
-            System.out.println(c);
+            System.out.println("+----------------+--------------------+----------------+-------------+--------------------+---------------+" +
+                    "---------------+-------------------+---------------+");
+            System.out.printf("|%-16s|%-20s|%-16s|%-13s|%-20s|%-15s|%-15s|%-19s|%-15s|\n",
+                    c.getId(), c.getName(), c.getDate(), c.getGender(), c.getCode(), c.getTelephone(),
+                    c.getEmail(), c.getTypeCustomer(), c.getAddress());
         }
+        System.out.println("+----------------+--------------------+----------------+-------------+--------------------+---------------+" +
+                "---------------+-------------------+---------------+");
     }
 
     @Override
@@ -166,9 +176,19 @@ public class CustomerService implements ICustomerService {
     @Override
     public void editCustomer() {
         List<Customer> customerList = customerRepository.displayCustomer();
+        System.out.println("+----------------+--------------------+----------------+-------------+--------------------" +
+                "+---------------+---------------+-------------------+---------------+");
+        System.out.println("| Mã khách hàng  | Tên khách hàng     | Ngày sinh      | Giới tính   | Căn cước công dân  | Số điện thoại |" +
+                " Email         | Loại khách hàng   | Địa chỉ       |");
         for (Customer c : customerList) {
-            System.out.println(c);
+            System.out.println("+----------------+--------------------+----------------+-------------+--------------------+---------------+" +
+                    "---------------+-------------------+---------------+");
+            System.out.printf("|%-16s|%-20s|%-16s|%-13s|%-20s|%-15s|%-15s|%-19s|%-15s|\n",
+                    c.getId(), c.getName(), c.getDate(), c.getGender(), c.getCode(), c.getTelephone(),
+                    c.getEmail(), c.getTypeCustomer(), c.getAddress());
         }
+        System.out.println("+----------------+--------------------+----------------+-------------+--------------------+---------------+" +
+                "---------------+-------------------+---------------+");
         System.out.print("Nhập idCustomer cần sửa: ");
         String idCustomer = scanner.nextLine();
         boolean checkid = false;
