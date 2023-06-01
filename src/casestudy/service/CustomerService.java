@@ -2,6 +2,7 @@ package casestudy.service;
 
 
 import casestudy.model.Customer;
+import casestudy.model.Employee;
 import casestudy.repository.CustomerRepository;
 import casestudy.validate.CustomerRegex;
 import casestudy.validate.UniqueException;
@@ -176,13 +177,13 @@ public class CustomerService implements ICustomerService {
     @Override
     public void editCustomer() {
         List<Customer> customerList = customerRepository.displayCustomer();
-        System.out.println("+----------------+--------------------+----------------+-------------+--------------------" +
-                "+---------------+---------------+-------------------+---------------+");
-        System.out.println("| Mã khách hàng  | Tên khách hàng     | Ngày sinh      | Giới tính   | Căn cước công dân  | Số điện thoại |" +
-                " Email         | Loại khách hàng   | Địa chỉ       |");
+        System.out.println("+----------------+--------------------+----------------+-------------+--------------------"
+                + "+---------------+---------------+-------------------+---------------+");
+        System.out.println("| Mã khách hàng  | Tên khách hàng     | Ngày sinh      | Giới tính   | Căn cước công dân  "
+                + "| Số điện thoại | Email         | Loại khách hàng   | Địa chỉ       |");
         for (Customer c : customerList) {
-            System.out.println("+----------------+--------------------+----------------+-------------+--------------------+---------------+" +
-                    "---------------+-------------------+---------------+");
+            System.out.println("+----------------+--------------------+----------------+-------------+------------------"
+                    + "--+---------------+---------------+-------------------+---------------+");
             System.out.printf("|%-16s|%-20s|%-16s|%-13s|%-20s|%-15s|%-15s|%-19s|%-15s|\n",
                     c.getId(), c.getName(), c.getDate(), c.getGender(), c.getCode(), c.getTelephone(),
                     c.getEmail(), c.getTypeCustomer(), c.getAddress());
@@ -401,6 +402,49 @@ public class CustomerService implements ICustomerService {
         }
         if (!checkid) {
             System.out.println("ko có id bạn muốn sửa. ");
+        }
+    }
+
+    @Override
+    public void removeCustomer() {
+        List<Customer> customerList = customerRepository.displayCustomer();
+        System.out.print("Nhập id muốn xoá: ");
+        String idCustomer = scanner.nextLine();
+        boolean flag = false;
+        for (int i = 0; i < customerList.size(); i++) {
+            if (customerList.get(i).getId().equals(idCustomer)) {
+                flag = true;
+                System.out.print("Bạn có chắc muốn xoá " + customerList.get(i).getName() + " khỏi danh sách nhân viên không\n" +
+                        "1. Xoá nhân viên\n" +
+                        "2. Không xoá\n" +
+                        "Mời chọn chức năng: ");
+                String chose = scanner.nextLine();
+                switch (chose) {
+                    case "1":
+                        customerRepository.removeCustomer(i);
+                        System.out.println("bạn xoá thành công!");
+                        break;
+                    case "2":
+                        break;
+                }
+            }
+        }
+        if (!flag) {
+            System.out.println("Không có id muốn xoá! ");
+        }
+    }
+
+    @Override
+    public void searchCustomer() {
+        System.out.print("Nhập tên muốn tìm kiếm: ");
+        String nameCustomer = scanner.nextLine();
+        List<Customer> customers = customerRepository.customerSearch(nameCustomer);
+        if (customers.size() == 0) {
+            System.out.println("Ko có tên nhân viên muốn tìm!");
+        } else {
+            for (Customer e : customers) {
+                System.out.println(e);
+            }
         }
     }
 }

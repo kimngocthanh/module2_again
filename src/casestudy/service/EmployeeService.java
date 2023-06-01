@@ -7,6 +7,7 @@ import casestudy.validate.CustomerRegex;
 import casestudy.validate.EmployeeRegex;
 import casestudy.validate.UniqueException;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -512,6 +513,50 @@ public class EmployeeService implements IEmployeeService {
         }
         if (!checkid) {
             System.out.println("ko có id bạn muốn xoá. ");
+        }
+    }
+
+    @Override
+    public void removeEmployee() {
+        List<Employee> employeeList = employeeRepository.displayEmployee();
+        System.out.print("Nhập id muốn xoá");
+        String idEmployee = scanner.nextLine();
+        boolean flag = false;
+        for (int i = 0; i < employeeList.size(); i++) {
+            if (employeeList.get(i).getId().equals(idEmployee)) {
+                flag = true;
+                System.out.print("Bạn có chắc muốn xoá " + employeeList.get(i).getName() + " khỏi danh sách nhân viên ko\n" +
+                        "1. Xoá nhân viên\n" +
+                        "2. Không xoá\n" +
+                        "Mời chọn chức năng: ");
+                String chose = scanner.nextLine();
+                switch (chose) {
+                    case "1":
+                        employeeRepository.removeEmployee(i);
+                        System.out.println("bạn xoá thành công!");
+                        break;
+                    case "2":
+                        break;
+                }
+            }
+        }
+        if (!flag) {
+            System.out.println("Không có id muốn xoá! ");
+        }
+
+    }
+
+    @Override
+    public void searchEmployee() {
+        System.out.print("Nhập tên muốn tìm kiếm!");
+        String nameEmployee = scanner.nextLine();
+        List<Employee> employees = employeeRepository.employeeListSearch(nameEmployee);
+        if (employees.size() == 0) {
+            System.out.println("Ko có tên nhân viên muốn tìm!");
+        } else {
+            for (Employee e : employees) {
+                System.out.println(e);
+            }
         }
     }
 }

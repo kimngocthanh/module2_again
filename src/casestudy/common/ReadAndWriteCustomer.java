@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadAndWriteCustomer {
-
     public static void writeToFile(String Path, List<Customer> customerList){
         File file = new File(Path);
         try {

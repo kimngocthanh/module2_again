@@ -14,7 +14,9 @@ public class CustomerManagement {
                     "1. Display list customer\n" +
                     "2. Add new customer\n" +
                     "3. Edit customer\n" +
-                    "4. Return Menu\n" +
+                    "4. Remove customer\n" +
+                    "5. Search customer\n" +
+                    "6. Return Menu\n" +
                     "Mời bạn chọn chức năng: ");
             String chose = scanner.nextLine();
             switch (chose) {
@@ -31,6 +33,12 @@ public class CustomerManagement {
                     customerService.editCustomer();
                     break;
                 case "4":
+                    customerService.removeCustomer();
+                    break;
+                case "5":
+                    customerService.searchCustomer();
+                    break;
+                case "6":
                     flag = false;
                     break;
                 default:

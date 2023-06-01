@@ -15,7 +15,9 @@ public class EmployeeManagement {
                     "1. Display list empolyee\n" +
                     "2. Add new employee\n" +
                     "3. Edit employee\n" +
-                    "4. Return Menu\n" +
+                    "4. Remove employee\n" +
+                    "5. Search by name employee\n" +
+                    "6. Return Menu\n" +
                     "Mời bạn chọn chức năng: ");
             String chose = scanner.nextLine();
             switch (chose){
@@ -32,6 +34,14 @@ public class EmployeeManagement {
                     employeeService.setEmployee();
                     break;
                 case "4":
+                    //remove
+                    employeeService.removeEmployee();
+                    break;
+                case "5":
+                    //search
+                    employeeService.searchEmployee();
+                    break;
+                case "6":
                     flag=false;
                     break;
                 default:

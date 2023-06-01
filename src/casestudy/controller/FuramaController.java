@@ -8,6 +8,8 @@ public class FuramaController {
     private CustomerManagement customerManagement = new CustomerManagement();
 
     private EmployeeManagement employeeManagement = new EmployeeManagement();
+
+    private FacilityManagement facilityManagement = new FacilityManagement();
     public void menuFuramaResort(){
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
@@ -32,6 +34,7 @@ public class FuramaController {
                     break;
                 case "3":
                     //Facility
+                    facilityManagement.facilityManagement();
                     break;
                 case "4":
                     //booking

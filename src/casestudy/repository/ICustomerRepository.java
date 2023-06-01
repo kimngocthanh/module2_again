@@ -10,4 +10,8 @@ public interface ICustomerRepository {
     void addCustomer(Customer customer);
 
     void editCustomer(int index, Customer customer);
+
+    void removeCustomer(int index);
+
+    List<Customer> customerSearch(String nameCustomer);
 }

@@ -7,4 +7,8 @@ public interface ICustomerService {
 
     void editCustomer();
 
+    void removeCustomer();
+
+    void searchCustomer();
+
 }

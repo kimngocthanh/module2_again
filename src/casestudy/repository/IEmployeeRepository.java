@@ -10,4 +10,8 @@ public interface IEmployeeRepository {
     void addEmployee(Employee employee);
 
     void editEmployee(int index, Employee employee);
+
+    void removeEmployee(int index);
+
+    List<Employee> employeeListSearch(String nameEmployee);
 }

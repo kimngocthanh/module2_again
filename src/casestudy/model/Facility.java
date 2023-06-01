@@ -1,18 +1,18 @@
 package casestudy.model;
 
-public abstract class FuramaResort {
+public abstract class Facility {
     private String idService;
     private String nameService;
-    private String area;
+    private double area;
     private double rentalCosts;
     private int numberPerson;
     private String typeRental;
 
-    public FuramaResort() {
+    public Facility() {
 
     }
 
-    public FuramaResort(String idService, String nameService, String area, double rentalCosts, int numberPerson, String typeRental) {
+    public Facility(String idService, String nameService, double area, double rentalCosts, int numberPerson, String typeRental) {
         this.idService = idService;
         this.nameService = nameService;
         this.area = area;
@@ -37,11 +37,11 @@ public abstract class FuramaResort {
         this.nameService = nameService;
     }
 
-    public String getArea() {
+    public double getArea() {
         return area;
     }
 
-    public void setArea(String area) {
+    public void setArea(double area) {
         this.area = area;
     }
 

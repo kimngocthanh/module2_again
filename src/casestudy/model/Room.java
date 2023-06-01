@@ -1,13 +1,13 @@
 package casestudy.model;
 
-public class Room extends FuramaResort {
+public class Room extends Facility {
     private String freeService;
 
     public Room() {
 
     }
 
-    public Room(String idService, String nameService, String area, double rentalCosts, int numberPerson,
+    public Room(String idService, String nameService, double area, double rentalCosts, int numberPerson,
                 String typeRental, String freeService) {
         super(idService, nameService, area, rentalCosts, numberPerson, typeRental);
         this.freeService = freeService;
