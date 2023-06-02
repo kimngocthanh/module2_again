@@ -1,19 +1,17 @@
 package casestudy.service;
 
-import casestudy.model.Customer;
 import casestudy.model.Employee;
 import casestudy.repository.EmployeeRepository;
 import casestudy.validate.CustomerRegex;
 import casestudy.validate.EmployeeRegex;
 import casestudy.validate.UniqueException;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeService implements IEmployeeService {
-    private Scanner scanner = new Scanner(System.in);
-    private EmployeeRepository employeeRepository = new EmployeeRepository();
+    private final Scanner scanner = new Scanner(System.in);
+    private final EmployeeRepository employeeRepository = new EmployeeRepository();
 
     @Override
     public void displayEmployee() {

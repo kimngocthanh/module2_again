@@ -25,7 +25,7 @@ public class CustomerRepository implements ICustomerRepository{
     @Override
     public void editCustomer(int index, Customer customer) {
         List<Customer> customerList = ReadAndWriteCustomer.readToFile("src/casestudy/data/customer.csv");
-        customerList.set(index,customer);
+        customerList.set(index, customer);
         ReadAndWriteCustomer.writeToFile("src/casestudy/data/customer.csv",customerList);
     }
 

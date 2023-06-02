@@ -1,17 +1,16 @@
 package casestudy.controller;
 
-import casestudy.service.EmployeeService;
 
 import java.util.Scanner;
 
 public class FuramaController {
-    private CustomerManagement customerManagement = new CustomerManagement();
+    private final CustomerManagement customerManagement = new CustomerManagement();
 
-    private EmployeeManagement employeeManagement = new EmployeeManagement();
+    private final EmployeeManagement employeeManagement = new EmployeeManagement();
 
-    private FacilityManagement facilityManagement = new FacilityManagement();
+    private final FacilityManagement facilityManagement = new FacilityManagement();
 
-    private BookingManagement bookingManagement = new BookingManagement();
+    private final BookingManagement bookingManagement = new BookingManagement();
 
     public void menuFuramaResort() {
         Scanner scanner = new Scanner(System.in);

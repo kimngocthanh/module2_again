@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class CustomerManagement {
     Scanner scanner = new Scanner(System.in);
-    private CustomerService customerService = new CustomerService();
+    private final CustomerService customerService = new CustomerService();
     public void customerManagement() {
         boolean flag = true;
         do {

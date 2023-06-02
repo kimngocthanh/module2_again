@@ -1,10 +1,12 @@
 package casestudy.controller;
 
+import casestudy.service.BookingService;
+
 import java.util.Scanner;
 
 public class BookingManagement {
     Scanner scanner = new Scanner(System.in);
-
+    private final BookingService bookingService = new BookingService();
     public void bookingManagement() {
         boolean flag = true;
         do {
@@ -19,9 +21,11 @@ public class BookingManagement {
             switch (chose) {
                 case "1":
                     // add booking
+                    bookingService.addBooking();
                     break;
                 case "2":
                     // hiển thị lish booking
+                    bookingService.displayBooking();
                     break;
                 case "3":
                     //tạo mới hợp đồng

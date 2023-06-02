@@ -15,7 +15,7 @@ import java.util.Set;
 public class FacilityService implements IFacilityService {
     Scanner scanner = new Scanner(System.in);
 
-    private FacilityRepository facilityRepository = new FacilityRepository();
+    private final FacilityRepository facilityRepository = new FacilityRepository();
 
     @Override
     public void displayFacility() {
@@ -52,7 +52,7 @@ public class FacilityService implements IFacilityService {
 
     @Override
     public void addRoom() {
-        Map<Facility, Integer> facilityIntegerMap = facilityRepository.displayFacility();
+//        Map<Facility, Integer> facilityIntegerMap = facilityRepository.displayFacility();
         String idRoom = "";
         do {
             System.out.print("Mời Nhập Id room theo đúng định dạng RO-XXXX: ");
@@ -416,7 +416,7 @@ public class FacilityService implements IFacilityService {
 
     @Override
     public void removeFacility() {
-        Map<Facility, Integer> facilityIntegerMap = facilityRepository.displayFacility();
+//        Map<Facility, Integer> facilityIntegerMap = facilityRepository.displayFacility();
         System.out.print("Nhập id dịch vụ muốn xoá: ");
         String idFacility = scanner.nextLine();
         boolean flag = false;

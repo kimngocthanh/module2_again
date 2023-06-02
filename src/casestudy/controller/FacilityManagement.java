@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class FacilityManagement {
     Scanner scanner = new Scanner(System.in);
-    private FacilityService facilityService = new FacilityService();
+    private final FacilityService facilityService = new FacilityService();
 
     public void facilityManagement() {
         boolean flag = true;

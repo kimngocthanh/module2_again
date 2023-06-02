@@ -1,6 +1,6 @@
 package casestudy.model;
 
-public class Booking {
+public class Booking implements Comparable<Booking>{
     private String idBooking;
     private String dateBooking;
     private String dayStartRental;
@@ -79,5 +79,13 @@ public class Booking {
                 ", idCustomer='" + idCustomer + '\'' +
                 ", idService='" + idService + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Booking o) {
+        if(this.dayStartRental.equals(o.dayStartRental)){
+            return this.getDayEndRental().compareTo(o.getDayEndRental());
+        }
+        return this.getDayStartRental().compareTo(o.getDayStartRental());
     }
 }

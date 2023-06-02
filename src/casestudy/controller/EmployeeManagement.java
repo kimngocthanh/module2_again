@@ -5,7 +5,7 @@ import casestudy.service.EmployeeService;
 import java.util.Scanner;
 
 public class EmployeeManagement {
-    private EmployeeService employeeService = new EmployeeService();
+    private final EmployeeService employeeService = new EmployeeService();
 
     public void employeeManagement(){
         Scanner scanner = new Scanner(System.in);
