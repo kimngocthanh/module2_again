@@ -63,7 +63,7 @@ public class ReadAndWriteFacility {
                 if(arr[0].contains("RO")){
                     Room room = new Room(arr[0], arr[1], Double.parseDouble(arr[2]), Double.parseDouble(arr[3]),
                             Integer.parseInt(arr[4]), arr[5], arr[6]);
-                    facilityIntegerMap.put(room, 0);
+                    facilityIntegerMap.put(room, 5);
                 }
                 else if( arr[0].contains("VI")){
                     Villa villa = new Villa(arr[0], arr[1], Double.parseDouble(arr[2]), Double.parseDouble(arr[3]),

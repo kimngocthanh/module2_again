@@ -25,7 +25,7 @@ public class EmployeeRepository implements IEmployeeRepository {
     @Override
     public void editEmployee(int index, Employee employee) {
         List<Employee> employeeList = ReadAndWriteEmployee.readToFileEmployee(PATH_EMPLOYEE);
-        employeeList.set(index, employee);
+        employeeList.set(index,employee);
         ReadAndWriteEmployee.writeToFileEmployee(PATH_EMPLOYEE, employeeList);
     }
 

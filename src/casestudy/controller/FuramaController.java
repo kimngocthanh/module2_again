@@ -10,7 +10,10 @@ public class FuramaController {
     private EmployeeManagement employeeManagement = new EmployeeManagement();
 
     private FacilityManagement facilityManagement = new FacilityManagement();
-    public void menuFuramaResort(){
+
+    private BookingManagement bookingManagement = new BookingManagement();
+
+    public void menuFuramaResort() {
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
         do {
@@ -23,7 +26,7 @@ public class FuramaController {
                     "6. exit\n" +
                     "Mời bạn chọn chức năng: ");
             String chose = scanner.nextLine();
-            switch (chose){
+            switch (chose) {
                 case "1":
                     //employee management
                     employeeManagement.employeeManagement();
@@ -38,6 +41,7 @@ public class FuramaController {
                     break;
                 case "4":
                     //booking
+                    bookingManagement.bookingManagement();
                     break;
                 case "5":
                     //promotion
@@ -48,7 +52,7 @@ public class FuramaController {
                     System.out.println("nhập sai chức năng mời bạn nhập lại!");
                     break;
             }
-        }while (flag);
+        } while (flag);
 
     }
 }

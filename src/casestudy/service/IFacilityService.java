@@ -10,4 +10,6 @@ public interface IFacilityService {
     void addVilla();
 
     void removeFacility();
+
+    void displayFacilityMaintenance();
 }

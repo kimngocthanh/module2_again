@@ -1,1 +1,5 @@
-VI-0000,Abc,50.0,20.0,12,Thuê theo ngày,Abc,30.0,3
+HO-0000,Abc ,40.0,40.0,13,Thuê theo tháng,Cao Cấp  ,4
+VI-0000,Vlla,50.0,40.0,10,Thuê theo tháng,Bình Dân ,50.0,3
+RO-0000,Room,60.0,60.0,12,Thuê theo tháng,free nước
+RO-0001,Mnc,50.0,34.0,2,Thuê theo tháng,free bữa sáng
+RO-0001,Kâ,40.0,40.0,12,Thuê theo ngày,free bữa tối

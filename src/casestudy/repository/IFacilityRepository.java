@@ -13,5 +13,7 @@ public interface IFacilityRepository {
 
     void addHouse(Facility house, int integer);
 
-    void removeFacility(Facility facility);
+    void removeFacility(String id);
+
+    Map<Facility, Integer> displayFacilityMaintenance();
 }

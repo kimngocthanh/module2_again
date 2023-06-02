@@ -22,32 +22,32 @@ public class FacilityService implements IFacilityService {
         Map<Facility, Integer> facilityIntegerMap = facilityRepository.displayFacility();
         Set<Facility> facilitySet = facilityIntegerMap.keySet();
         System.out.println("+---------------+---------------+------------------+----------------+-----------+------------------+ " +
-                "------------------+------------------+----------+--------------------+");
+                "------------------+------------------+----------+--------------------+------------------");
         System.out.println("| Mã dịch vụ    | Tên dịch vụ   | Diện tích phòng  | Chi phí thuê   | Số người  | Kiểu thuê        | " +
-                "Tiêu chuẩn phòng  | Diện tích hồ bơi | Số Tầng  |  Dịch vụ miễn phí  | ");
+                "Tiêu chuẩn phòng  | Diện tích hồ bơi | Số Tầng  |  Dịch vụ miễn phí  | Số lần sử dụng   |");
         for (Facility f : facilitySet) {
             System.out.println("+---------------+---------------+------------------+----------------+-----------+------------------+ " +
-                    "------------------+------------------+----------+--------------------+");
+                    "------------------+------------------+----------+--------------------+------------------");
             if (f instanceof Room) {
-                System.out.printf("|%-15s|%-15s|%-18s|%-16s|%-11s|%-18s|%-19s|%-18s|%-10s|%-20s|\n",
+                System.out.printf("|%-15s|%-15s|%-18s|%-16s|%-11s|%-18s|%-19s|%-18s|%-10s|%-20s|%-18s|\n",
                         f.getIdService(), f.getNameService(), f.getArea(),
                         f.getRentalCosts(), f.getNumberPerson(), f.getTypeRental(), " ", " ", " "
-                        , ((Room) f).getFreeService());
+                        , ((Room) f).getFreeService(), facilityIntegerMap.get(f));
             } else if (f instanceof House) {
-                System.out.printf("|%-15s|%-15s|%-18s|%-16s|%-11s|%-18s|%-19s|%-18s|%-10s|%-20s|\n",
+                System.out.printf("|%-15s|%-15s|%-18s|%-16s|%-11s|%-18s|%-19s|%-18s|%-10s|%-20s|%-18s|\n",
                         f.getIdService(), f.getNameService(), f.getArea(),
                         f.getRentalCosts(), f.getNumberPerson(), f.getTypeRental(),
-                        ((House) f).getRoomStandardHouse(), "", ((House) f).getNumberFloors(), " ");
+                        ((House) f).getRoomStandardHouse(), "", ((House) f).getNumberFloors(), " ",facilityIntegerMap.get(f));
             } else {
-                System.out.printf("|%-15s|%-15s|%-18s|%-16s|%-11s|%-18s|%-19s|%-18s|%-10s|%-20s|\n",
+                System.out.printf("|%-15s|%-15s|%-18s|%-16s|%-11s|%-18s|%-19s|%-18s|%-10s|%-20s|%-18s|\n",
                         f.getIdService(), f.getNameService(), f.getArea(),
                         f.getRentalCosts(), f.getNumberPerson(), f.getTypeRental(),
                         ((Villa) f).getRoomStandardVilla(), ((Villa) f).getAreaPool(),
-                        ((Villa) f).getNumberFloors(), " ");
+                        ((Villa) f).getNumberFloors(), " ",facilityIntegerMap.get(f));
             }
         }
         System.out.println("+---------------+---------------+------------------+----------------+-----------+------------------+ " +
-                "------------------+------------------+----------+--------------------+");
+                "------------------+------------------+----------+--------------------+------------------");
     }
 
     @Override
@@ -144,7 +144,7 @@ public class FacilityService implements IFacilityService {
             }
         } while (!flagTypeRental);
 
-        System.out.print("Nhập dịch vụ cho thuê: ");
+        System.out.print("Nhập dịch vụ miễn phí đi kèm : ");
         String freeService = scanner.nextLine();
 
         Room room = new Room(idRoom, nameRoom, areaRoom, rentalCosts, numberPerson, typeRental, freeService);
@@ -419,12 +419,60 @@ public class FacilityService implements IFacilityService {
         Map<Facility, Integer> facilityIntegerMap = facilityRepository.displayFacility();
         System.out.print("Nhập id dịch vụ muốn xoá: ");
         String idFacility = scanner.nextLine();
+        boolean flag = false;
+        do {
+            System.out.print("Bạn có chắc muốn xoá ko\n" +
+                    "1. Xoá\n" +
+                    "2. Không xoá\n" +
+                    "Mời bạn chọn : ");
+            String chose = scanner.nextLine();
+            switch (chose){
+                case "1":
+                    facilityRepository.removeFacility(idFacility);
+                    System.out.println("Bạn đã xoá thành công!");
+                    flag = true;
+                    break;
+                case "2":
+                    System.out.println("Không xoá dịch vụ! ");
+                    flag=true;
+                    break;
+                default:
+                    System.out.println("Nhập sai chức năng mời bạn nhập lại cho đúng!");
+                    break;
+            }
+        }while (!flag);
+    }
+
+    @Override
+    public void displayFacilityMaintenance() {
+        Map<Facility, Integer> facilityIntegerMap = facilityRepository.displayFacilityMaintenance();
         Set<Facility> facilitySet = facilityIntegerMap.keySet();
+        System.out.println("+---------------+---------------+------------------+----------------+-----------+------------------+ " +
+                "------------------+------------------+----------+--------------------+------------------");
+        System.out.println("| Mã dịch vụ    | Tên dịch vụ   | Diện tích phòng  | Chi phí thuê   | Số người  | Kiểu thuê        | " +
+                "Tiêu chuẩn phòng  | Diện tích hồ bơi | Số Tầng  |  Dịch vụ miễn phí  | Số lần sử dụng   |");
         for (Facility f : facilitySet) {
-            if (idFacility.equals(f.getIdService())) {
-                facilityRepository.removeFacility(f);
-                System.out.println("xoá thành công!");
+            System.out.println("+---------------+---------------+------------------+----------------+-----------+------------------+ " +
+                    "------------------+------------------+----------+--------------------+------------------");
+            if (f instanceof Room) {
+                System.out.printf("|%-15s|%-15s|%-18s|%-16s|%-11s|%-18s|%-19s|%-18s|%-10s|%-20s|%-18s|\n",
+                        f.getIdService(), f.getNameService(), f.getArea(),
+                        f.getRentalCosts(), f.getNumberPerson(), f.getTypeRental(), " ", " ", " "
+                        , ((Room) f).getFreeService(), facilityIntegerMap.get(f));
+            } else if (f instanceof House) {
+                System.out.printf("|%-15s|%-15s|%-18s|%-16s|%-11s|%-18s|%-19s|%-18s|%-10s|%-20s|%-18s|\n",
+                        f.getIdService(), f.getNameService(), f.getArea(),
+                        f.getRentalCosts(), f.getNumberPerson(), f.getTypeRental(),
+                        ((House) f).getRoomStandardHouse(), "", ((House) f).getNumberFloors(), " ",facilityIntegerMap.get(f));
+            } else {
+                System.out.printf("|%-15s|%-15s|%-18s|%-16s|%-11s|%-18s|%-19s|%-18s|%-10s|%-20s|%-18s|\n",
+                        f.getIdService(), f.getNameService(), f.getArea(),
+                        f.getRentalCosts(), f.getNumberPerson(), f.getTypeRental(),
+                        ((Villa) f).getRoomStandardVilla(), ((Villa) f).getAreaPool(),
+                        ((Villa) f).getNumberFloors(), " ",facilityIntegerMap.get(f));
             }
         }
+        System.out.println("+---------------+---------------+------------------+----------------+-----------+------------------+ " +
+                "------------------+------------------+----------+--------------------+------------------");
     }
 }

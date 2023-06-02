@@ -59,6 +59,7 @@ public class FacilityManagement {
                     break;
                 case "4":
                     //hiển thị danh sách sử dụng 5 lần
+                    facilityService.displayFacilityMaintenance();
                     break;
                 case "5":
                     flag = false;
