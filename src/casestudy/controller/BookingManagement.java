@@ -1,12 +1,15 @@
 package casestudy.controller;
 
 import casestudy.service.BookingService;
+import casestudy.service.ContractService;
 
 import java.util.Scanner;
 
 public class BookingManagement {
     Scanner scanner = new Scanner(System.in);
     private final BookingService bookingService = new BookingService();
+    private final ContractService contractService = new ContractService();
+
     public void bookingManagement() {
         boolean flag = true;
         do {
@@ -29,11 +32,15 @@ public class BookingManagement {
                     break;
                 case "3":
                     //tạo mới hợp đồng
+                    contractService.addContract();
                     break;
                 case "4":
                     //hiển hị hợp đồng
+                    contractService.displayContract();
+                    break;
                 case "5":
                     // sửa hợp đồng
+                    contractService.editContract();
                     break;
                 case "6":
                     flag = false;

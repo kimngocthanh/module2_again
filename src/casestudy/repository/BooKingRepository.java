@@ -7,6 +7,7 @@ import java.util.TreeSet;
 
 public class BooKingRepository implements IBookingRepository {
     private static final String PATH_BOOKING = "src/casestudy/data/booking.csv";
+    private static final FacilityRepository facilityRepository = new FacilityRepository();
 
     @Override
     public TreeSet<Booking> displayBooing() {
@@ -19,5 +20,9 @@ public class BooKingRepository implements IBookingRepository {
         TreeSet<Booking> bookingSet = ReadAndWriteBooking.readToFile(PATH_BOOKING);
         bookingSet.add(booking);
         ReadAndWriteBooking.writeToFile(PATH_BOOKING, bookingSet);
+    }
+
+    public void addFacilityMaintenance(Booking booking) {
+        facilityRepository.addBookingMaintenance(booking.getIdService());
     }
 }

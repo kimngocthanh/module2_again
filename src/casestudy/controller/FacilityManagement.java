@@ -10,7 +10,7 @@ public class FacilityManagement {
 
     public void facilityManagement() {
         boolean flag = true;
-        do{
+        do {
             System.out.print("1. Hiển thị dịch vụ\n" +
                     "2. Thêm mới dịch vụ\n" +
                     "3. Xoá dịch vụ\n" +
@@ -25,14 +25,14 @@ public class FacilityManagement {
                     break;
                 case "2":
                     boolean flagAdd = true;
-                    do{
+                    do {
                         System.out.println("1. Thêm mới villa\n" +
                                 "2. Thêm mới house\n" +
                                 "3. Thêm mới room\n" +
                                 "4. Thoát thêm mới: \n" +
                                 "Mời bạn chọn chức năng: ");
                         String choseAdd = scanner.nextLine();
-                        switch (choseAdd){
+                        switch (choseAdd) {
                             case "1":
                                 //thêm villa
                                 facilityService.addVilla();
@@ -46,13 +46,13 @@ public class FacilityManagement {
                                 facilityService.addRoom();
                                 break;
                             case "4":
-                                flagAdd= false;
+                                flagAdd = false;
                                 break;
                             default:
                                 System.out.println("Chọn sai chức năng mời chọn lại cho đúng: ");
                                 break;
                         }
-                    }while (flagAdd);
+                    } while (flagAdd);
                     break;
                 case "3":
                     facilityService.removeFacility();
@@ -68,7 +68,7 @@ public class FacilityManagement {
                     System.out.println("Chọn sai chức năng mời chọn lại chức năng cho đúng! ");
                     break;
             }
-        }while (flag);
+        } while (flag);
 
     }
 }

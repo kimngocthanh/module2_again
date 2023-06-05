@@ -2,7 +2,6 @@ package casestudy.service;
 
 
 import casestudy.model.Customer;
-import casestudy.model.Employee;
 import casestudy.repository.CustomerRepository;
 import casestudy.validate.CustomerRegex;
 import casestudy.validate.UniqueException;
@@ -11,8 +10,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CustomerService implements ICustomerService {
-    private Scanner scanner = new Scanner(System.in);
-    private CustomerRepository customerRepository = new CustomerRepository();
+    private final Scanner scanner = new Scanner(System.in);
+    private final CustomerRepository customerRepository = new CustomerRepository();
 
     @Override
     public void displayCustomer() {
@@ -37,7 +36,7 @@ public class CustomerService implements ICustomerService {
         List<Customer> customerList = customerRepository.displayCustomer();
         //String id, String name, String date, String gender, String code, String telephone, String email,
         // String typeCustomer, String address
-        String idCustomer = "";
+        String idCustomer;
         do {
             try {
                 System.out.print("Nhập id khách hàng theo đúng định dạng KH-XXXX: ");
@@ -58,7 +57,7 @@ public class CustomerService implements ICustomerService {
 
         } while (true);
 
-        String nameCustomer = "";
+        String nameCustomer;
         do {
             System.out.print("Nhập tên khách hàng chữ cái đầu phải viết hoa: ");
             nameCustomer = scanner.nextLine();
@@ -67,7 +66,7 @@ public class CustomerService implements ICustomerService {
             }
         } while (!CustomerRegex.checkRegexNameCustomer(nameCustomer));
 
-        String dateCustomer = "";
+        String dateCustomer;
         do {
             System.out.print("Nhập năm sinh khách hàng theo đúng định dạng YYYY-MM-DD: ");
             dateCustomer = scanner.nextLine();
@@ -102,7 +101,7 @@ public class CustomerService implements ICustomerService {
             }
         } while (!flag);
 
-        String codeCustomer = "";
+        String codeCustomer;
         do {
             System.out.print("Nhập Căn cước công dân 9 số hoặc 12 số: ");
             codeCustomer = scanner.nextLine();
@@ -111,7 +110,7 @@ public class CustomerService implements ICustomerService {
             }
         } while (!CustomerRegex.checkRegexCodeCusTomer(codeCustomer));
 
-        String telephoneCustomer = "";
+        String telephoneCustomer;
         do {
             System.out.print("Nhập số điện thoại bắt đầu từ 0 và đủ 10 số: ");
             telephoneCustomer = scanner.nextLine();
@@ -120,7 +119,7 @@ public class CustomerService implements ICustomerService {
             }
         } while (!CustomerRegex.checkRegexTelephoneCustomer(telephoneCustomer));
 
-        String emailCustomer = "";
+        String emailCustomer;
         do {
             System.out.print("Nhập email khách hàng theo định dạng username@domain.extension: ");
             emailCustomer = scanner.nextLine();

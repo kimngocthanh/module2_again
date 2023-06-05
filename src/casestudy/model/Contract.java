@@ -1,16 +1,16 @@
 package casestudy.model;
 
-public class Contact {
+public class Contract {
     private int numberContact;
     private String idBooking;
     private double depositAmount;
     private double totalPayment;
 
-    public Contact(){
+    public Contract(){
 
     }
 
-    public Contact(int numberContact, String idBooking, double depositAmount, double totalPayment) {
+    public Contract(int numberContact, String idBooking, double depositAmount, double totalPayment) {
         this.numberContact = numberContact;
         this.idBooking = idBooking;
         this.depositAmount = depositAmount;

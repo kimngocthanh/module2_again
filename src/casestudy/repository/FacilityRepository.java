@@ -19,7 +19,7 @@ public class FacilityRepository implements IFacilityRepository {
     @Override
     public void addRoom(Facility room, int index) {
         Map<Facility, Integer> facilityIntegerMap = ReadAndWriteFacility.readToFileFacility(PATH_FACILITY);
-        facilityIntegerMap.put(room, 5);
+        facilityIntegerMap.put(room, 0);
         ReadAndWriteFacility.writeToFileFacility(PATH_FACILITY, facilityIntegerMap);
     }
 
@@ -63,5 +63,16 @@ public class FacilityRepository implements IFacilityRepository {
 
     }
 
-
+    public void addBookingMaintenance(String idService) {
+//        Map<Facility, Integer> facilityIntegerMap = ReadAndWriteFacility.readToFileFacility(PATH_FACILITY);
+        Map<Facility, Integer> facilityIntegerMapMaintenance = ReadAndWriteFacility.readToFileFacility(PATH_FACILITY);
+        Set<Facility> set = facilityIntegerMapMaintenance.keySet();
+        for (Facility f : set) {
+            if (idService.equals(f.getIdService())) {
+                Integer value = facilityIntegerMapMaintenance.get(f) + 1;
+                facilityIntegerMapMaintenance.put(f, value);
+            }
+        }
+        ReadAndWriteFacility.writeToFileFacility(PATH_FACILITY, facilityIntegerMapMaintenance);
+    }
 }

@@ -7,9 +7,9 @@ import java.util.Scanner;
 public class EmployeeManagement {
     private final EmployeeService employeeService = new EmployeeService();
 
-    public void employeeManagement(){
+    public void employeeManagement() {
         Scanner scanner = new Scanner(System.in);
-        boolean flag =true;
+        boolean flag = true;
         do {
             System.out.print("----------EmployeeManagement----------\n" +
                     "1. Display list empolyee\n" +
@@ -20,7 +20,7 @@ public class EmployeeManagement {
                     "6. Return Menu\n" +
                     "Mời bạn chọn chức năng: ");
             String chose = scanner.nextLine();
-            switch (chose){
+            switch (chose) {
                 case "1":
                     // display
                     employeeService.displayEmployee();
@@ -42,12 +42,12 @@ public class EmployeeManagement {
                     employeeService.searchEmployee();
                     break;
                 case "6":
-                    flag=false;
+                    flag = false;
                     break;
                 default:
                     System.out.println("nhập sai chức năng mời bạn nhập lại !");
             }
-        }while (flag);
+        } while (flag);
 
     }
 }

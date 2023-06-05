@@ -23,14 +23,14 @@ public class ReadAndWriteFacility {
                 if (f instanceof Room) {
                     bufferedWriter.write(f.getIdService() + "," + f.getNameService() + "," + f.getArea() + "," +
                             f.getRentalCosts() + "," + f.getNumberPerson() + "," + f.getTypeRental() + ","
-                            + ((Room) f).getFreeService());
+                            + ((Room) f).getFreeService() + "," + facilityIntegerMap.get(f));
                     bufferedWriter.newLine();
                 } else if (f instanceof House) {
                     //String idService, String nameService, String area, double rentalCosts, int numberPerson,
                     // String typeRental, String roomStandardHouse, int numberFloors
                     bufferedWriter.write(f.getIdService() + "," + f.getNameService() + "," + f.getArea() + "," +
                             f.getRentalCosts() + "," + f.getNumberPerson() + "," + f.getTypeRental() + "," +
-                            ((House) f).getRoomStandardHouse() + "," + ((House) f).getNumberFloors());
+                            ((House) f).getRoomStandardHouse() + "," + ((House) f).getNumberFloors() + "," + facilityIntegerMap.get(f));
                     bufferedWriter.newLine();
                 } else {
                     //String idService, String nameService, String area, double rentalCosts, int numberPerson,
@@ -38,7 +38,7 @@ public class ReadAndWriteFacility {
                     bufferedWriter.write(f.getIdService() + "," + f.getNameService() + "," + f.getArea() + "," +
                             f.getRentalCosts() + "," + f.getNumberPerson() + "," + f.getTypeRental() + "," +
                             ((Villa) f).getRoomStandardVilla() + "," + ((Villa) f).getAreaPool() + "," +
-                            ((Villa) f).getNumberFloors());
+                            ((Villa) f).getNumberFloors() + "," + facilityIntegerMap.get(f));
                     bufferedWriter.newLine();
                 }
             }
@@ -57,24 +57,21 @@ public class ReadAndWriteFacility {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line = "";
-            Set<Facility> facilitySet = facilityIntegerMap.keySet();
             while ((line = bufferedReader.readLine()) != null && !line.equals("")) {
                 String[] arr = line.split(",");
-                if(arr[0].contains("RO")){
+                if (arr[0].contains("RO")) {
                     Room room = new Room(arr[0], arr[1], Double.parseDouble(arr[2]), Double.parseDouble(arr[3]),
                             Integer.parseInt(arr[4]), arr[5], arr[6]);
-                    facilityIntegerMap.put(room, 5);
-                }
-                else if( arr[0].contains("VI")){
+                    facilityIntegerMap.put(room, Integer.parseInt(arr[7]));
+                } else if (arr[0].contains("VI")) {
                     Villa villa = new Villa(arr[0], arr[1], Double.parseDouble(arr[2]), Double.parseDouble(arr[3]),
                             Integer.parseInt(arr[4]), arr[5], arr[6], Double.parseDouble(arr[7]),
                             Integer.parseInt(arr[8]));
-                    facilityIntegerMap.put(villa, 0);
-                }
-                else {
+                    facilityIntegerMap.put(villa, Integer.parseInt(arr[9]));
+                } else {
                     House house = new House(arr[0], arr[1], Double.parseDouble(arr[2]), Double.parseDouble(arr[3]),
                             Integer.parseInt(arr[4]), arr[5], arr[6], Integer.parseInt(arr[7]));
-                    facilityIntegerMap.put(house, 0);
+                    facilityIntegerMap.put(house, Integer.parseInt(arr[8]));
                 }
             }
             bufferedReader.close();
